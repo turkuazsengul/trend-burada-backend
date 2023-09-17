@@ -1,0 +1,34 @@
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 200
+      min-spare: 20
+    max-connections: 500
+    max-keep-alive-requests: 300
+    keep-alive-timeout: 120000
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: ms-apigateway
+  config:
+    import: configserver:http://configuration:8888
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowedCredentials: true
+      routes:
+        - id: ms-order
+          uri: http://api-order:10000/
+          predicates:
+            - Path=/api/v1/order/**
+        - id: ms-product
+          uri: http://api-product:20000/
+          predicates:
+            - Path=/api/v1/product/**
