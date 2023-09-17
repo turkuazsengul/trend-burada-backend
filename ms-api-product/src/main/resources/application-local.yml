@@ -1,0 +1,10 @@
+server:
+  port: ${app.port:20000}
+  error:
+    include-binding-errors: always
+    include-message: always
+spring:
+  application:
+    name: product
+  config:
+    import: configserver:http://localhost:8888
