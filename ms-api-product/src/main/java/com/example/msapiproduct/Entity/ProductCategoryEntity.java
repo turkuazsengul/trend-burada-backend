@@ -1,9 +1,8 @@
 package com.example.msapiproduct.Entity;
 
 import com.example.msapiproduct.Core.BaseEntity;
+import jakarta.persistence.*;
 import lombok.Data;
-
-import javax.persistence.*;
 
 @Data
 @Entity

@@ -3,7 +3,7 @@ create table category
 (
     id serial not null constraint category_pk primary key,
     name varchar(255) not null,
-    sort_order int not null
+    sort_order integer
 );
 
 alter table category owner to postgres;
@@ -18,7 +18,7 @@ INSERT INTO public.category (id, name) VALUES (4, 'Sanat');
 create table sub_category
 (
     id serial not null constraint sub_category_pk primary key,
-    name varchar(255) not null,
+    name varchar(255) not null
 );
 
 alter table sub_category owner to postgres;
@@ -46,10 +46,9 @@ INSERT INTO public.sub_category (id, name) VALUES (4, 'Tablo');
 create table category_tree
 (
     id serial not null constraint category_tree_pk primary key,
-    name varchar(255) not null,
     category_id integer constraint ms_product_category_id_fk references category,
     sub_category_id integer constraint ms_product_sub_category_id_fk references sub_category,
-    child_category_id integer constraint ms_product_child_category_id_fk references child_category,
+    child_category_id integer constraint ms_product_child_category_id_fk references child_category
 );
 
 alter table sub_category owner to postgres;
