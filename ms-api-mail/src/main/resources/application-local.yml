@@ -1,0 +1,48 @@
+server:
+  port: ${app.port:50000}
+  error:
+    include-binding-errors: always
+    include-message: always
+spring:
+  application:
+    name: mail-service
+  config:
+    import: configserver:http://localhost:8888
+  mail:
+    default-encoding: UTF-8
+    host: smtp-relay.sendinblue.com
+    username: trend-burada@outlook.com
+    password: 8YkpdfWLgVmNO2MH
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    protocol: smtp
+    test-connection: false
+  cloud:
+    stream:
+      bindings:
+        mailOperationInputChannel:
+          destination: mail-service.operation
+          group: mail-service-group
+      rabbit:
+        bindings:
+          mailOperationInputChannel:
+            consumer:
+              autoBindDlq: true
+              republishToDlq: true
+      binders:
+        local_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 127.0.0.1
+                port: 5672
+                username: guest
+                password: guest
+                virtual-host: /
+

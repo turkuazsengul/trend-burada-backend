@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ms
+    username: postgres
+    password: postgres
+    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: none
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:5555/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true
+#cloud:
+#  stream:
+#    bindings:
+#      mailOperationInputChannel:
+#        destination: mail-service.operation
+#        group: mail-service-group
+#      mailOperationOutputChannel:
+#        destination: mail-service.operation
+#    rabbit:
+#      bindings:
+#        mailOperationInputChannel:
+#          consumer:
+#            autoBindDlq: true
+#            republishToDlq: true
+#    binders:
+#      local_rabbit:
+#        type: rabbit
+#        environment:
+#          spring:
+#            rabbitmq:
+#              host: 127.0.0.1
+#              port: 5672
+#              username: guest
+#              password: guest
+#              virtual-host: /
