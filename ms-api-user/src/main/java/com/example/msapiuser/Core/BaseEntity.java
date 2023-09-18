@@ -1,8 +1,8 @@
 package com.example.msapiuser.Core;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 @Data

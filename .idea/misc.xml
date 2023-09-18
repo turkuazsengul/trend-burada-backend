@@ -8,6 +8,8 @@
         <option value="$PROJECT_DIR$/ms-node-discovery/pom.xml" />
         <option value="$PROJECT_DIR$/ms-api-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/ms-api-product/pom.xml" />
+        <option value="$PROJECT_DIR$/ms-api-mail/pom.xml" />
+        <option value="$PROJECT_DIR$/ms-api-user/pom.xml" />
       </list>
     </option>
   </component>

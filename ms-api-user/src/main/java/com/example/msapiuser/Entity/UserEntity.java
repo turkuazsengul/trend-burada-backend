@@ -1,14 +1,15 @@
 package com.example.msapiuser.Entity;
 
 import com.example.msapiuser.Core.BaseEntity;
-import com.example.msapiuser.Model.RoleDto;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "ms_user")
 public class UserEntity extends BaseEntity {
@@ -24,14 +25,14 @@ public class UserEntity extends BaseEntity {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "cinsiyet")
-    private String cinsiyet;
+    @Column(name = "gender")
+    private String gender;
 
-    @Column(name = "durum")
+    @Column(name = "state")
     private boolean isEnable;
 
-    @Column(name = "adres")
-    private String adres;
+    @Column(name = "address")
+    private String address;
 
     @Column(name = "gsm_no")
     private String gsm_no;
@@ -39,7 +40,7 @@ public class UserEntity extends BaseEntity {
     @Column(name = "confirm_code")
     private Integer confirmCode;
 
-    @Column(name = "confirmcode_created_time")
+    @Column(name = "confirm_code_created_time")
     private Date confirmCodeCreatedTime;
 
     @ManyToMany

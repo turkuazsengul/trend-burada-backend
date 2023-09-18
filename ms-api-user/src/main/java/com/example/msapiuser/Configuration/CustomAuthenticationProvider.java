@@ -65,4 +65,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         }
         return passwordEncoder;
     }
+
+    public CustomUserDetailsService getUserDetailService() {
+        return this.userDetailsService;
+    }
 }
