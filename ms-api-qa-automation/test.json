@@ -1,0 +1,40 @@
+{
+  "returnCode": 1111,
+  "returnMessage": "İşleminiz Başarıyla gerçekleştirilmiştir.",
+  "resultCount": 4,
+  "returnData": [
+    {
+      "pkId": 26,
+      "name": "Maket Uçak",
+      "price": 345.0,
+      "inventoryStatus": "instock",
+      "description": "Maket uçak setleri",
+      "category": "Eğlence",
+      "quantity": 92,
+      "rating": 4,
+      "image": "https://imgfly.scarabresearch.com/w_300/https://st-vans.mncdn.com/mnresize/1000/1000/Content/media/ProductImg/original/637639359771886229.jpg"
+    },
+    {
+      "pkId": 27,
+      "name": "aysel",
+      "price": 12.0,
+      "inventoryStatus": "yes",
+      "description": "sadsa",
+      "category": "asdas",
+      "quantity": 23,
+      "rating": 3424,
+      "image": "dsasd"
+    },
+    {
+      "pkId": 28,
+      "name": "Maket Uçak1",
+      "price": 345.0,
+      "inventoryStatus": "instock",
+      "description": "Maket uçak setleri",
+      "category": "Eğlence",
+      "quantity": 92,
+      "rating": 4,
+      "image": "https://imgfly.scarabresearch.com/w_300/https://st-vans.mncdn.com/mnresize/1000/1000/Content/media/ProductImg/original/637639359771886229.jpg"
+    }
+  ]
+}

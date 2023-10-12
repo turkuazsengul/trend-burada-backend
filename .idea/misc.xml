@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/ms-api-product/pom.xml" />
         <option value="$PROJECT_DIR$/ms-api-mail/pom.xml" />
         <option value="$PROJECT_DIR$/ms-api-user/pom.xml" />
+        <option value="$PROJECT_DIR$/ms-api-qa-automation/pom.xml" />
       </list>
     </option>
   </component>

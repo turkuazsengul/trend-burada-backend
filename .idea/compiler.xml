@@ -7,17 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ms-api-gateway" />
+        <module name="ms-api-product" />
         <module name="ms-node-configuration" />
         <module name="ms-node-discovery" />
         <module name="ms-api-mail" />
         <module name="ms-api-user" />
-        <module name="ms-api-gateway" />
-        <module name="ms-api-product" />
+        <module name="apiOtomation" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="apiOtomation" options="-parameters" />
       <module name="ms-api-gateway" options="-parameters" />
       <module name="ms-api-mail" options="-parameters" />
       <module name="ms-api-product" options="-parameters" />
