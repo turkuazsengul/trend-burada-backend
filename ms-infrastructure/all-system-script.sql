@@ -8,10 +8,10 @@ create table category
 
 alter table category owner to postgres;
 
-INSERT INTO public.category (id, name) VALUES (1, 'Giyim');
-INSERT INTO public.category (id, name) VALUES (2, 'Spor');
-INSERT INTO public.category (id, name) VALUES (3, 'Hobi');
-INSERT INTO public.category (id, name) VALUES (4, 'Sanat');
+INSERT INTO public.category (id, name, sort_order) VALUES (1, 'Giyim', 1);
+INSERT INTO public.category (id, name, sort_order) VALUES (2, 'Spor', 2);
+INSERT INTO public.category (id, name, sort_order) VALUES (3, 'Hobi', 3);
+INSERT INTO public.category (id, name, sort_order) VALUES (4, 'Sanat', 4);
 
 
 ------------ SUB-CATEGORY SCRIPTS ------------
