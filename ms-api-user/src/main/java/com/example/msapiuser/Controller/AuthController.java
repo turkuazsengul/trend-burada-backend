@@ -30,8 +30,6 @@ public class AuthController {
     @Autowired
     private ResponseMapper responseMapper;
 
-    //    @PreAuthorize(value = "hasAuthority(T(com.example.msapiuser.constants.RoleConstants).ROLE_CUSTOMER)")
-    @PreAuthorize("permitAll()")
     @PostMapping("/register")
     public ResponseEntity<BaseResponse> register(@RequestBody UserDto userDto) {
         return new ResponseEntity<>(authService.register(userDto), HttpStatus.OK);

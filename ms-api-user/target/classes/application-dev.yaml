@@ -21,6 +21,6 @@ spring:
               rabbitmq:
                 host: trendburada-rabbit
                 port: 5672
-                username: guest
-                password: guest
+                username: quest
+                password: quest
                 virtual-host: /

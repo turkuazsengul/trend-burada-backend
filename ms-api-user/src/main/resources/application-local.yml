@@ -5,7 +5,7 @@ server:
     include-message: always
 spring:
   application:
-    name: user
+    name: user-service
   config:
     import: configserver:http://localhost:8888
   cloud:
@@ -19,8 +19,8 @@ spring:
           environment:
             spring:
               rabbitmq:
-                host: localhost
+                host: 127.0.0.1
                 port: 5672
-                username: guest
-                password: guest
+                username: quest
+                password: quest
                 virtual-host: /

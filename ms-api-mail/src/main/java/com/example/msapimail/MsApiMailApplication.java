@@ -5,9 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 
-@EnableBinding({
-        MailOperationChannel.class
-})
+@EnableBinding({MailOperationChannel.class})
 @SpringBootApplication
 public class MsApiMailApplication {
 
