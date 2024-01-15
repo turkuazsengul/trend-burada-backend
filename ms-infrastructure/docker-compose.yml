@@ -1,36 +1,15 @@
 version: '3.8'
 services:
   postgres:
+    container_name: postgres
     image: postgres:14.1-alpine
     restart: always
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=keycloak
+      - POSTGRES_DB=ms
     ports:
       - '5432:5432'
-  keycloak:
-    image: quay.io/keycloak/keycloak:legacy
-    environment:
-      DB_VENDOR: POSTGRES
-      DB_ADDR: postgres
-      DB_DATABASE: keycloak
-      DB_USER: postgres
-      DB_SCHEMA: public
-      DB_PASSWORD: postgres
-      KEYCLOAK_USER: admin
-      KC_HOSTNAME_STRICT: false
-      KC_HOSTNAME_STRICT_HTTPS: false
-      KEYCLOAK_PASSWORD: Pa55w0rd
-      KC_HOSTNAME: mykeycloak
-      KC_HTTP_ENABLED: 'true'
-      # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
-      #JDBC_PARAMS: "ssl=true"
-    ports:
-      - "8180:8080"
-      - "8787:8787" # debug port
-    depends_on:
-      - postgres
   rabbitmq:
     image: rabbitmq:management
     container_name: rabbitmq
@@ -40,3 +19,17 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+  configuration:
+    container_name: configuration
+    image: turkuazsengul/ms-node-configuration
+    environment:
+      - "SPRING_PROFILES_ACTIVE=dev"
+    ports:
+      - "8888:8888"
+  discovery:
+    container_name: eureka
+    image: turkuazsengul/ms-node-discovery
+    environment:
+      - "SPRING_PROFILES_ACTIVE=dev"
+    ports:
+      - "5555:5555"

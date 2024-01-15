@@ -8,8 +8,3 @@ spring:
     name: product
   config:
     import: configserver:http://configuration:8888
-#app:
-#  domain: d1
-#  subdomain: sb1
-#  boundedcontext: b1
-#  microservice: ${spring.application.name}

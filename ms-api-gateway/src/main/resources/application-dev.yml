@@ -22,7 +22,6 @@ spring:
             allowedOrigins: "http://localhost:3000"
             allowedMethods: "*"
             allowedHeaders: "*"
-            allowedCredentials: true
       routes:
         - id: ms-order
           uri: http://api-order:10000/
