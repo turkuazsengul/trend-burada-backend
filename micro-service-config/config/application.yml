@@ -1,4 +1,19 @@
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: login-app
+            authorization-grant-type: authorization_code
+            scope: openid
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8180/auth/realms/TrendBurada
+            user-name-attribute: preferred_username
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8180/auth/realms/TrendBurada
   datasource:
     url: jdbc:postgresql://localhost:5432/ms
     username: postgres

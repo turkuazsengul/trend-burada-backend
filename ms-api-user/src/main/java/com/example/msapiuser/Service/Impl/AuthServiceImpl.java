@@ -32,8 +32,8 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     private UserConverter userConverter;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private MailService mailService;
@@ -56,7 +56,7 @@ public class AuthServiceImpl implements AuthService {
             userDto.setConfirmCode(randomConfirmCode);
             userDto.setEnable(false);
             userDto.setConfirmCodeCreatedTime(new Date());
-            userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
+//            userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
             userRepository.save(userConverter.convertToEntity(userDto));
             mailService.sendRegisterConfirmMail2Queues(userDto.getEmail(), randomConfirmCode);

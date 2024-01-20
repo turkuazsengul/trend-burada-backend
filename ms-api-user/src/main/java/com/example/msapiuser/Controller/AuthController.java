@@ -31,6 +31,7 @@ public class AuthController {
     private ResponseMapper responseMapper;
 
     @PostMapping("/register")
+    @PreAuthorize("permitAll()")
     public ResponseEntity<BaseResponse> register(@RequestBody UserDto userDto) {
         return new ResponseEntity<>(authService.register(userDto), HttpStatus.OK);
     }
