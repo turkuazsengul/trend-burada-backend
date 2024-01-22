@@ -13,33 +13,25 @@ import com.example.msapiuser.Model.UserDto;
 import com.example.msapiuser.Repository.UserRepository;
 import com.example.msapiuser.Service.AuthService;
 import com.example.msapiuser.Service.MailService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
-@Component
+@Service
+@RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
     private final Logger logger = LoggerFactory.getLogger(AuthServiceImpl.class);
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private UserConverter userConverter;
-
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private MailService mailService;
-
-    @Autowired
-    private ResponseMapper responseMapper;
+    private final UserRepository userRepository;
+    private final UserConverter userConverter;
+    private final MailService mailService;
+    private final ResponseMapper responseMapper;
 
     @Override
     public UserDto login(String username) {
@@ -53,9 +45,9 @@ public class AuthServiceImpl implements AuthService {
             int randomConfirmCode = randomConfirmCode();
 
             checkUserFound(userDto);
-            userDto.setConfirmCode(randomConfirmCode);
+//            userDto.setConfirmCode(randomConfirmCode);
             userDto.setEnable(false);
-            userDto.setConfirmCodeCreatedTime(new Date());
+//            userDto.setConfirmCodeCreatedTime(new Date());
 //            userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
             userRepository.save(userConverter.convertToEntity(userDto));
@@ -104,8 +96,8 @@ public class AuthServiceImpl implements AuthService {
             UserDto userDto = userConverter.convertToDto(userRepository.findByPkId(userId));
 
             if(userDto !=null){
-                userDto.setConfirmCode(randomConfirmCode);
-                userDto.setConfirmCodeCreatedTime(new Date());
+//                userDto.setConfirmCode(randomConfirmCode);
+//                userDto.setConfirmCodeCreatedTime(new Date());
 
                 userRepository.save(userConverter.convertToEntity(userDto));
                 mailService.sendRegisterConfirmMail2Queues(userDto.getEmail(), randomConfirmCode);
@@ -124,13 +116,13 @@ public class AuthServiceImpl implements AuthService {
     }
 
     private void checkMailConfirmCode(int confirmCode, UserDto userDto) {
-        int providedConfirmCode = userDto.getConfirmCode();
+//        int providedConfirmCode = userDto.getConfirmCode();
 
-        if (confirmCode != providedConfirmCode) {
-            throw new AccountConfirmExceptions("Register Confirm Fail! ",ExceptionConstants.CONFIRM_PROCESS_FAIL_MESSAGE);
-        } else {
-            userDto.setEnable(true);
-        }
+//        if (confirmCode != providedConfirmCode) {
+//            throw new AccountConfirmExceptions("Register Confirm Fail! ",ExceptionConstants.CONFIRM_PROCESS_FAIL_MESSAGE);
+//        } else {
+//            userDto.setEnable(true);
+//        }
     }
 
     private void checkUserFound(UserDto userDto) throws RegisterExceptions {

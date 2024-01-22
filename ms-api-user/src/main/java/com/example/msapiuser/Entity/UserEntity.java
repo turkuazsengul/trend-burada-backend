@@ -16,9 +16,6 @@ public class UserEntity extends BaseEntity {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "password")
-    private String password;
-
     @Column(name = "name")
     private String name;
 
@@ -36,17 +33,5 @@ public class UserEntity extends BaseEntity {
 
     @Column(name = "gsm_no")
     private String gsm_no;
-
-    @Column(name = "confirm_code")
-    private Integer confirmCode;
-
-    @Column(name = "confirm_code_created_time")
-    private Date confirmCodeCreatedTime;
-
-    @ManyToMany
-    @JoinTable(name = "ms_user_role",
-            joinColumns = @JoinColumn(name = "fk_user_id", referencedColumnName = "id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "fk_role_id", referencedColumnName = "id", nullable = false))
-    private List<RoleEntity> roleList;
 
 }

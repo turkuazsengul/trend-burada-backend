@@ -6,6 +6,7 @@ import com.example.msapiuser.Core.Response.ExceptionalResponse;
 import com.example.msapiuser.Core.Response.Response;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -14,19 +15,19 @@ public class ResponseMapper {
     public Response<Object> response2Map(Object data){
         Response<Object> baseResponse = new Response<>();
 
-        baseResponse.setReturnCode(BaseResponseCodeEnum.SUCCESS_CODE.getCode());
-        baseResponse.setReturnMessage(BaseResponseMessageEnum.SUCCESS_MESSAGE.getMessage());
-        baseResponse.addList(data);
+        if (data instanceof List<?>){
+            List<Object> dataList = (List<Object>) data;
 
-        return baseResponse;
-    }
-
-    public Response<Object> response2Map(List<Object> dataList){
-        Response<Object> baseResponse = new Response<>();
-
-        baseResponse.setReturnCode(BaseResponseCodeEnum.SUCCESS_CODE.getCode());
-        baseResponse.setReturnMessage(BaseResponseMessageEnum.SUCCESS_MESSAGE.getMessage());
-        baseResponse.setReturnData(dataList);
+            baseResponse.setReturnCode(BaseResponseCodeEnum.SUCCESS_CODE.getCode());
+            baseResponse.setReturnMessage(BaseResponseMessageEnum.SUCCESS_MESSAGE.getMessage());
+            baseResponse.setResultCount(dataList.size());
+            baseResponse.setReturnData(dataList);
+        }else {
+            baseResponse.setReturnCode(BaseResponseCodeEnum.SUCCESS_CODE.getCode());
+            baseResponse.setReturnMessage(BaseResponseMessageEnum.SUCCESS_MESSAGE.getMessage());
+            baseResponse.setResultCount(1);
+            baseResponse.addList(data);
+        }
 
         return baseResponse;
     }

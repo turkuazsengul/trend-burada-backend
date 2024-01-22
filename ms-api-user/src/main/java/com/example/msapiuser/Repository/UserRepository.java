@@ -9,9 +9,7 @@ import java.util.List;
 @Repository
 public interface UserRepository extends CrudRepository<UserEntity,Integer> {
     List<UserEntity> findAll();
-    UserEntity findByEmailAndPassword(String username, String password);
     UserEntity findByEmail(String username);
-    int findByConfirmCode(int code);
     UserEntity findByPkId(int id);
     List<UserEntity> findByIsEnable(boolean isEnabled);
 }

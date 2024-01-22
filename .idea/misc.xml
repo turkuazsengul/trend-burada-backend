@@ -11,7 +11,15 @@
         <option value="$PROJECT_DIR$/ms-api-mail/pom.xml" />
         <option value="$PROJECT_DIR$/ms-api-user/pom.xml" />
         <option value="$PROJECT_DIR$/ms-api-qa-automation/pom.xml" />
+        <option value="$PROJECT_DIR$/ms-configuration/pom.xml" />
+        <option value="$PROJECT_DIR$/common-security/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/common-security/pom.xml" />
+        <option value="$PROJECT_DIR$/ms-configuration/pom.xml" />
+      </set>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />
   </component>

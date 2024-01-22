@@ -1,4 +1,4 @@
-package com.example.msapiuser.Configuration;
+package com.example.msapiuser.configuration;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
