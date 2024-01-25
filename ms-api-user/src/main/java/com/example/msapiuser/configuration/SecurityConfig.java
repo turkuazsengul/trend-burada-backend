@@ -36,7 +36,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests(authorize -> authorize.requestMatchers("/api/v1/user/**").fullyAuthenticated());
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/api/v1/user/management/**").fullyAuthenticated()
+                        .requestMatchers("/api/v1/user/auth/**").permitAll()
+                );
 
         http.oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults()));
 

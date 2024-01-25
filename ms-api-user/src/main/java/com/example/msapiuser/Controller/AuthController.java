@@ -6,9 +6,11 @@ import com.example.msapiuser.Core.Response.BaseResponseCodeEnum;
 import com.example.msapiuser.Core.Response.BaseResponseMessageEnum;
 import com.example.msapiuser.Core.Response.Response;
 import com.example.msapiuser.Exception.RegisterExceptions;
+import com.example.msapiuser.Model.KeycloakUserDto;
 import com.example.msapiuser.Model.UserDto;
 import com.example.msapiuser.Service.AuthService;
 import com.example.msapiuser.Service.Impl.AuthServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,19 +26,18 @@ import org.springframework.web.client.RestTemplate;
 import java.security.Principal;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/user/auth")
 public class AuthController {
     private final Logger logger = LoggerFactory.getLogger(AuthServiceImpl.class);
 
-    @Autowired
-    private AuthService authService;
+    private final AuthService authService;
+    private final ResponseMapper responseMapper;
 
-    @Autowired
-    private ResponseMapper responseMapper;
-
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     @PostMapping("/register")
-    public ResponseEntity<BaseResponse> register(@RequestBody UserDto userDto) {
-        return new ResponseEntity<>(authService.register(userDto), HttpStatus.OK);
+    public ResponseEntity<BaseResponse> register(@RequestBody KeycloakUserDto keycloakUserDto) {
+        return new ResponseEntity<>(authService.register(keycloakUserDto), HttpStatus.OK);
     }
 
     @PostMapping("/login")

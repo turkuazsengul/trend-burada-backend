@@ -9,9 +9,11 @@ import com.example.msapiuser.Entity.UserEntity;
 import com.example.msapiuser.Exception.AccountConfirmExceptions;
 import com.example.msapiuser.Exception.DuplicateUserException;
 import com.example.msapiuser.Exception.RegisterExceptions;
+import com.example.msapiuser.Model.KeycloakUserDto;
 import com.example.msapiuser.Model.UserDto;
 import com.example.msapiuser.Repository.UserRepository;
 import com.example.msapiuser.Service.AuthService;
+import com.example.msapiuser.Service.KeycloakService;
 import com.example.msapiuser.Service.MailService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -19,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClientException;
 
 import java.util.Date;
 
@@ -32,6 +35,7 @@ public class AuthServiceImpl implements AuthService {
     private final UserConverter userConverter;
     private final MailService mailService;
     private final ResponseMapper responseMapper;
+    private final KeycloakService keycloakService;
 
     @Override
     public UserDto login(String username) {
@@ -39,27 +43,42 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public BaseResponse register(UserDto userDto) {
+    public BaseResponse register(KeycloakUserDto keycloakUserDto) {
         BaseResponse baseResponse;
         try {
-            int randomConfirmCode = randomConfirmCode();
+            keycloakService.addUser(keycloakUserDto);
 
-            checkUserFound(userDto);
-//            userDto.setConfirmCode(randomConfirmCode);
-            userDto.setEnable(false);
-//            userDto.setConfirmCodeCreatedTime(new Date());
-//            userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
-
-            userRepository.save(userConverter.convertToEntity(userDto));
-            mailService.sendRegisterConfirmMail2Queues(userDto.getEmail(), randomConfirmCode);
-
-            baseResponse = responseMapper.response2Map(userDto);
-        } catch (RegisterExceptions e) {
+            baseResponse = responseMapper.response2Map(keycloakUserDto);
+        } catch (WebClientException e) {
+            logger.error("Confirm Proses Fail: " + e.getMessage());
             baseResponse = responseMapper.exceptionalResponse2Map(e);
         }
 
         return baseResponse;
     }
+
+//    @Override
+//    public BaseResponse register(UserDto userDto) {
+//        BaseResponse baseResponse;
+//        try {
+//            int randomConfirmCode = randomConfirmCode();
+//
+//            checkUserFound(userDto);
+////            userDto.setConfirmCode(randomConfirmCode);
+//            userDto.setEnable(false);
+////            userDto.setConfirmCodeCreatedTime(new Date());
+////            userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
+//
+//            userRepository.save(userConverter.convertToEntity(userDto));
+//            mailService.sendRegisterConfirmMail2Queues(userDto.getEmail(), randomConfirmCode);
+//
+//            baseResponse = responseMapper.response2Map(userDto);
+//        } catch (RegisterExceptions e) {
+//            baseResponse = responseMapper.exceptionalResponse2Map(e);
+//        }
+//
+//        return baseResponse;
+//    }
 
     @Override
     public BaseResponse confirm(int userId, int confirmCode) {
