@@ -34,4 +34,7 @@ public class UserEntity extends BaseEntity {
     @Column(name = "gsm_no")
     private String gsm_no;
 
+    @Column(name = "date_of_birth")
+    private String dob;
+
 }

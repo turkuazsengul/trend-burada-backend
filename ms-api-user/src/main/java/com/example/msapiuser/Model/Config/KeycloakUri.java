@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "uri")
 public class KeycloakUri {
+    private String userInfo;
     private String users;
     private String userById;
     private String userWithRole;

@@ -138,22 +138,22 @@ VALUES (10, 'Tenis Raketi', 500, 3, 'Tenis ve Tenis Malzemeleri', 2, 92, 2,
 ------------ USER SCRIPTS ------------
 create table ms_user
 (
-    id      serial  not null
-        constraint user_pk primary key,
+    id   varchar(255),
     email   varchar(255),
     name    varchar(255),
     surname varchar(255),
     gender  varchar(255),
     address varchar(255),
     gsm_no  varchar(255),
-    state   BOOLEAN not null,
+    date_of_birth varchar(255),
+    state   BOOLEAN not null
 );
 
-INSERT INTO ms_user (email, name, surname, gender, address, gsm_no, state)
-VALUES ('turkuazsengul@gmail.com', 'Turkuaz', 'ŞENGÜL', 'Erkek', 'Test Adres', '05393164759', true);
-
-INSERT INTO ms_user (email, name, surname, gender, address, gsm_no, state)
-VALUES ('iremmordk@gmail.com', 'İrem', 'ŞENGÜL', 'Kadın', 'Test Adres 2', '05398431203', true);
+-- INSERT INTO ms_user (id,email, name, surname, gender, address, gsm_no, state)
+-- VALUES ('turkuazsengul@gmail.com', 'Turkuaz', 'ŞENGÜL', 'Erkek', 'Test Adres', '05393164759', true);
+--
+-- INSERT INTO ms_user (email, name, surname, gender, address, gsm_no, state)
+-- VALUES ('iremmordk@gmail.com', 'İrem', 'ŞENGÜL', 'Kadın', 'Test Adres 2', '05398431203', true);
 -------------------------------------------------------------------------------------------------------------------------
 
 create table test_results

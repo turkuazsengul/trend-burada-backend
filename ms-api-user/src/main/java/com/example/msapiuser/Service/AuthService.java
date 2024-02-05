@@ -1,19 +1,12 @@
 package com.example.msapiuser.Service;
 
 import com.example.msapiuser.Core.Response.BaseResponse;
-import com.example.msapiuser.Core.Response.Response;
-import com.example.msapiuser.Exception.RegisterExceptions;
 import com.example.msapiuser.Model.KeycloakUserDto;
 import com.example.msapiuser.Model.UserDto;
+import jakarta.servlet.http.HttpServletRequest;
 
 public interface AuthService {
-    UserDto login(String username);
-
     BaseResponse register(KeycloakUserDto keycloakUserDto);
-
-    BaseResponse confirm(int userId, int confirmCode);
-
-    Response<UserDto> forgotPassword(int userId, int confirmCode);
-
-    BaseResponse createConfirm(int userId);
+    BaseResponse login(String authorizationHeader);
+    BaseResponse logout(String userId);
 }

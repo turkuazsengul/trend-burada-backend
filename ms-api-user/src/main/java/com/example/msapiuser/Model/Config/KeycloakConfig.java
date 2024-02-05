@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Setter
 @Component
 @ConfigurationProperties(prefix = "keycloak")
-public class Keycloak {
+public class KeycloakConfig {
     private String clientSecret;
     private String realmName;
     private String clientName;

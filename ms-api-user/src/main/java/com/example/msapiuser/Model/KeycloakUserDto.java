@@ -26,4 +26,7 @@ public class KeycloakUserDto {
     private List<KeycloakCredentials> credentials;
     private List<String> realmRoles;
     private KeycloakAccess access;
+    private String dateOfBirth;
+    private String address;
+    private String phoneNumber;
 }

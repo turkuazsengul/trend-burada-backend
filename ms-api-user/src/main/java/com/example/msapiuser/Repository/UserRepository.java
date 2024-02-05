@@ -10,6 +10,7 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<UserEntity,Integer> {
     List<UserEntity> findAll();
     UserEntity findByEmail(String username);
-    UserEntity findByPkId(int id);
+    UserEntity findByPkId(String id);
     List<UserEntity> findByIsEnable(boolean isEnabled);
+    void deleteByPkId(String id);
 }
