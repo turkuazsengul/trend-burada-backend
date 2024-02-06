@@ -35,6 +35,9 @@ public class AuthServiceImpl implements AuthService {
     public BaseResponse register(KeycloakUserDto keycloakUserDto) {
         BaseResponse baseResponse;
         try {
+            keycloakUserDto.setFirstName(keycloakUserDto.getFirstName().toUpperCase());
+            keycloakUserDto.setLastName(keycloakUserDto.getLastName().toUpperCase());
+
             keycloakAdminClientService.createUser(keycloakUserDto);
             String userId = keycloakAdminClientService.getUserId(keycloakUserDto.getUsername());
 

@@ -43,7 +43,7 @@ public class UserController {
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
     }
 
-    @GetMapping("/add")
+    @PostMapping("/add")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<BaseResponse> addUser(@RequestBody UserDto userDto) {
         BaseResponse baseResponse;
@@ -61,7 +61,7 @@ public class UserController {
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
     }
 
-    @GetMapping("/update")
+    @PutMapping("/update")
     @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     public ResponseEntity<BaseResponse> updateUser(@RequestBody UserDto userDto) {
         BaseResponse baseResponse;
@@ -79,7 +79,7 @@ public class UserController {
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
     }
 
-    @GetMapping("/delete")
+    @DeleteMapping("/delete")
     @PreAuthorize("hasAnyAuthority('ADMIN-CLI')")
     public ResponseEntity<BaseResponse> deleteUser(@RequestParam String userId) {
         BaseResponse baseResponse;
