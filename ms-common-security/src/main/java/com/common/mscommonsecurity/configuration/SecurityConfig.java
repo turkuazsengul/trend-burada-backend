@@ -1,4 +1,4 @@
-package com.example.msapiuser.configuration;
+package com.common.mscommonsecurity.configuration;
 
 import com.nimbusds.jose.shaded.gson.internal.LinkedTreeMap;
 import lombok.RequiredArgsConstructor;
@@ -17,11 +17,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -53,16 +53,6 @@ public class SecurityConfig {
 
         return http.build();
     }
-
-//    @Bean
-//    CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000","http://trendburada:3000"));
-//        configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE"));
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//        return source;
-//    }
 
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverterForKeycloak() {

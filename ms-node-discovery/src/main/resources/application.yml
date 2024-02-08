@@ -1,17 +1,23 @@
 server:
   port: 5555
+
 eureka:
   client:
-    service-url:
-      defaultZone: http://localhost:5555/eureka/
-    register-with-eureka: true
-    fetch-registry: true
-    healthcheck:
-      enabled: true
-  instance:
-    prefer-ip-address: true
-  server:
-    enable-self-preservation: false
+    registerWithEureka: false
+    fetchRegistry: false
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:5555/eureka/
+#    register-with-eureka: true
+#    fetch-registry: true
+#    healthcheck:
+#      enabled: true
+#  instance:
+#    prefer-ip-address: true
+#  server:
+#    enable-self-preservation: false
+
 #ssda
 #server.port=5555
 #

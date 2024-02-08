@@ -1,4 +1,4 @@
-package com.example.msapiuser.configuration;
+package com.common.mscommonsecurity.configuration;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RequiredArgsConstructor
 public class KeycloakLogoutHandler implements LogoutHandler {
     private static final Logger logger = LoggerFactory.getLogger(KeycloakLogoutHandler.class);
+
     private final RestTemplate restTemplate = new RestTemplate();
 
     @Override

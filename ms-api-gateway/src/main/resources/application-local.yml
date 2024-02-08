@@ -16,13 +16,6 @@ spring:
     import: configserver:http://localhost:8888
   cloud:
     gateway:
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "http://localhost:3000"
-            allowedMethods: "*"
-            allowedHeaders: "*"
-            allowedCredentials: true
       routes:
         - id: ms-order
           uri: http://localhost:10000/
@@ -32,3 +25,7 @@ spring:
           uri: http://localhost:20000/
           predicates:
             - Path=/api/v1/product/**
+        - id: ms-user
+          uri: http://localhost:40000/
+          predicates:
+            - Path=/api/v1/user/**

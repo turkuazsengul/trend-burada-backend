@@ -1,4 +1,4 @@
-package com.example.msapiuser.configuration;
+package com.common.mscommonsecurity.configuration;
 
 import org.keycloak.OAuth2Constants;
 import org.keycloak.admin.client.Keycloak;
