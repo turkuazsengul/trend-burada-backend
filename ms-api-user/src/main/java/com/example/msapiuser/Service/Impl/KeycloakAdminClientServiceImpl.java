@@ -23,6 +23,7 @@ import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,9 @@ public class KeycloakAdminClientServiceImpl implements KeycloakAdminClientServic
 
     private final KeycloakConfig keycloakConfig;
     private final Keycloak keycloak;
+
+    @Value("${keycloak-admin.server-url}")
+    private String serverUrl;
 
     @Override
     public void createUser(KeycloakUserDto keycloakUserDto) {
@@ -84,7 +88,7 @@ public class KeycloakAdminClientServiceImpl implements KeycloakAdminClientServic
     public AccessTokenResponse getUserAccessToken(String username, String password) {
         Keycloak keycloakUser = KeycloakBuilder
                 .builder()
-                .serverUrl("http://localhost:8180/auth")
+                .serverUrl(serverUrl)
                 .grantType(OAuth2Constants.PASSWORD)
                 .realm(keycloakConfig.getRealmName())
                 .clientId(keycloakConfig.getClientName())

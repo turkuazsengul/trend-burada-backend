@@ -53,10 +53,20 @@ EUREKA_JAR_PATH="C:\Users\turku\Desktop\DEV\trend-burada-backend\ms-node-discove
 EUREKA_INFRA_PATH="C:\Users\turku\Desktop\DEV\trend-burada-backend\ms-infrastructure\ms-node-discovery"
 EUREKA_DOCKERFILE_PATH="C:\Users\turku\Desktop\DEV\trend-burada-backend\ms-infrastructure\ms-node-discovery\Dockerfile"
 
-createPackage $CONFIGURATION_PATH $CONFIGURATION_JAR_PATH $CONFIGURATION_INFRA_PATH
-buildFromDockerfile $CONFIGURATION_DOCKERFILE_PATH turkuazsengul/ms-node-configuration:lts
-pushDockerImage turkuazsengul/ms-node-configuration:lts
+MS_USER_PATH="C:\Users\turku\Desktop\DEV\trend-burada-backend\ms-api-user"
+MS_USER_JAR_PATH="C:\Users\turku\Desktop\DEV\trend-burada-backend\ms-api-user\target\ms-api-user-0.0.1-SNAPSHOT.jar"
+MS_USER_INFRA_PATH="C:\Users\turku\Desktop\DEV\trend-burada-backend\ms-infrastructure\ms-api-user"
+MS_USER_DOCKERFILE_PATH="C:\Users\turku\Desktop\DEV\trend-burada-backend\ms-infrastructure\ms-api-user\Dockerfile"
 
-createPackage $EUREKA_PATH $EUREKA_JAR_PATH $EUREKA_INFRA_PATH
-buildFromDockerfile $EUREKA_DOCKERFILE_PATH turkuazsengul/ms-node-discovery:lts
-pushDockerImage turkuazsengul/ms-node-discovery:lts
+
+#createPackage $CONFIGURATION_PATH $CONFIGURATION_JAR_PATH $CONFIGURATION_INFRA_PATH
+#buildFromDockerfile $CONFIGURATION_DOCKERFILE_PATH turkuazsengul/ms-node-configuration:latest
+#pushDockerImage turkuazsengul/ms-node-configuration:latest
+
+#createPackage $EUREKA_PATH $EUREKA_JAR_PATH $EUREKA_INFRA_PATH
+#buildFromDockerfile $EUREKA_DOCKERFILE_PATH turkuazsengul/ms-node-discovery:latest
+#pushDockerImage turkuazsengul/ms-node-discovery:latest
+
+createPackage $MS_USER_PATH $MS_USER_JAR_PATH $MS_USER_INFRA_PATH
+buildFromDockerfile $MS_USER_DOCKERFILE_PATH turkuazsengul/ms-api-user:latest
+pushDockerImage turkuazsengul/ms-api-user:latest

@@ -13,6 +13,7 @@ spring:
       bindings:
         mailOperationOutputChannel:
           destination: mail-service.operation
+          group: dev-group
       binders:
         local_rabbit:
           type: rabbit
@@ -24,3 +25,4 @@ spring:
                 username: quest
                 password: quest
                 virtual-host: /
+      default-binder: rabbit
